@@ -22,3 +22,35 @@ Due to limitations of computational resource, however, I have decided to use har
 
 
 I would appreciate someone who have deep-knowledge in Neuroscience can help this project.
+
+
+### Building and Running
+
+```bash
+# Build
+$ git clone https://github.com/OrigamiDream/biological-neurons.git
+$ cd biological-neurons
+$ cmake .
+$ make
+
+# Run and simulate
+$ ./biological_neurons
+```
+
+This will simulate the randomly potentiated spikes for 1 second. <br>
+Find `spikes.json` file to check simulated results. You can plot a graph with the JSON-formatted data.
+
+### Plotting with Python
+```python
+import matplotlib.pyplot as plt
+import json
+
+with open('spikes.json', 'r') as f:
+    histories = json.load(f)
+
+plt.plot(figsize=(14, 7), facecolor='white')
+for name, p in histories.items():
+    plt.plot(p, label=name)
+plt.legend(loc='upper right')
+plt.show()
+```
